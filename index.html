@@ -117,14 +117,6 @@
         h1, h2, h3, h4, .font-serif {
             font-family: 'Lora', serif;
         }
-        .nav-link {
-            transition: all 0.2s ease-in-out;
-            border-bottom: 2px solid transparent;
-        }
-        .nav-link:hover, .nav-link.active {
-            color: #1d4ed8;
-            border-color: #1d4ed8;
-        }
         .article-card {
             transition: box-shadow 0.2s;
         }
@@ -173,216 +165,18 @@
     <header class="bg-white shadow-sm sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <h1 class="text-xl sm:text-2xl font-serif text-blue-600 font-bold tracking-tight">Infinite Inference <span class="text-sm text-gray-400 font-sans font-normal ml-2 hidden sm:inline">by Fan Chen-chieh</span></h1>
-            <div class="flex items-center space-x-2 sm:space-x-6">
-                <nav id="main-nav" class="space-x-2 sm:space-x-4">
-                    <a href="#page-home" class="nav-link px-2 py-1 text-sm font-medium active" data-page="home">Articles</a>
-                    <a href="#page-gallery" class="nav-link px-2 py-1 text-sm font-medium" data-page="gallery">Gallery</a>
-                    <a href="#page-about" class="nav-link px-2 py-1 text-sm font-medium" data-page="about">About</a>
-                </nav>
-                <a href="mailto:fanchenchieh1976@gmail.com" class="hidden sm:inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm">
-                    Contact Me
-                </a>
-            </div>
+            <a href="mailto:fanchenchieh1976@gmail.com" class="hidden sm:inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm">
+                Contact Me
+            </a>
         </div>
     </header>
 
     <main id="content-area" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-20">
 
-        <!-- ===================== HOME / ARTICLES ===================== -->
-        <section id="page-home" class="page">
-
-            <div id="hero-section" class="mb-12 text-center py-10 px-4 bg-white rounded-2xl shadow-sm border border-gray-100">
-                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-800 mb-4">Welcome to My Thinking Laboratory</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                    ORCID: <a href="https://orcid.org/0009-0000-5317-7385" target="_blank" class="text-blue-600 hover:underline">https://orcid.org/0009-0000-5317-7385</a><br>
-                    This is a genuine record of human-machine collaboration.<br>
-                    If you received one of my <span class="text-blue-600 font-bold">hand-cut business cards</span>, this is the complete world behind that small piece of paper.<br>
-                    Through "Infinite Inference" and deep collaboration, I explore the boundaries and possibilities of human cognition in the AI era.
-                </p>
-                <div class="mt-6">
-                    <a href="https://doi.org/10.5281/zenodo.20280700" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
-                        &#128196; Read my published research &mdash; DCM 2.0 on Zenodo
-                    </a>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-                <article class="article-card bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500 flex flex-col h-full">
-                    <p class="text-xs font-medium text-blue-500 mb-2 tracking-wider uppercase">Ethics &amp; Practice</p>
-                    <h3 class="text-xl font-serif font-bold text-gray-900 mb-3 leading-tight">Capability and Responsibility in the AI Era: When Professional Competence Needs a New Dimension</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-4">AI amplifies our capabilities — and simultaneously amplifies the impact of our decisions. In this era, a sense of responsibility has become a core competency as important as technical skill itself.</p>
-
-                    <details class="mt-auto pt-4 border-t border-gray-100">
-                        <summary class="cursor-pointer text-sm font-bold text-blue-600 hover:text-blue-800 flex items-center select-none">
-                            Read More <span class="chevron ml-1 text-lg transition-transform inline-block">&rsaquo;</span>
-                        </summary>
-                        <div class="article-body mt-4 text-sm sm:text-base text-gray-700">
-                            <h3>Starting Point: The Confusion of Technical Experts</h3>
-                            <p>Within technical communities, we observe an interesting phenomenon: many professionals with solid technical backgrounds experience confusion when facing AI systems. When an AI's answer is incomplete due to token limits or high concurrency, it may be interpreted as "not trying hard enough"; when AI produces hallucinations through probabilistic reasoning, it may be seen as "insufficient capability."</p>
-
-                            <p>This phenomenon is worth reflecting on: why might professionals with deep understanding of system constraints face challenges when trying to understand new types of systems?</p>
-
-                            <h3>The Challenge of Adapting Cognitive Frameworks</h3>
-                            <p>This likely stems from a process of <strong>cognitive framework adaptation</strong>. The deterministic thinking patterns built through professional training (such as precise logic in programming) require a framework shift when encountering probabilistic AI systems. This is not a question of professional competence, but a challenge of <strong>mental model adaptation</strong>.</p>
-
-                            <h3>New Challenges Brought by Capability Amplification</h3>
-                            <p>The most significant change brought by AI technology is drastically lowering the barrier to output. In traditional collaboration, the "cost" of producing output itself served as a natural moderating mechanism.</p>
-
-                            <p>When AI removes this barrier, we face new challenges:</p>
-                            <ul>
-                                <li><strong>Scale of Output:</strong> Professionals can now produce work at unprecedented speed and scale</li>
-                                <li><strong>Quality Control:</strong> How to maintain appropriate quality checks under high-volume output</li>
-                                <li><strong>Accountability:</strong> How to clearly define responsibility boundaries in AI-assisted work</li>
-                            </ul>
-
-                            <p>This is what we call the <strong>"capability amplification effect"</strong>: as productive capacity increases, the impact of our decisions scales up in parallel.</p>
-
-                            <h3>Professional Competence and Responsibility Awareness: Dual-Track Development</h3>
-                            <p>Let us define these two dimensions more precisely:</p>
-
-                            <p><strong>Professional Competence Dimension:</strong></p>
-                            <ul>
-                                <li>Understanding of tools and systems</li>
-                                <li>Technical operational proficiency</li>
-                                <li>Problem diagnosis and optimization capability</li>
-                                <li>Efficiency and quality of output</li>
-                            </ul>
-
-                            <p><strong>Responsibility Awareness Dimension:</strong></p>
-                            <ul>
-                                <li>Humility in acknowledging the boundaries of knowledge</li>
-                                <li>A realistic attitude toward accepting system limitations</li>
-                                <li>Ownership of the results produced</li>
-                                <li>Maintaining judgment under uncertainty</li>
-                            </ul>
-
-                            <p>In traditional work environments, professional competence was often the primary focus, as the natural limits on output speed provided a buffer. In AI-collaborative environments, however, <strong>these two dimensions need to develop in parallel</strong>.</p>
-
-                            <h3>A Key Insight</h3>
-                            <p>AI systems <strong>reflect the user's intent</strong> in a unique way. If our goal is rapid task completion while disregarding understanding, AI will help us achieve that — but possibly at the cost of deep learning. If our goal is systematic understanding and gradual improvement, AI equally supports that process.</p>
-
-                            <p>This is not about AI being "good" or "bad," but about how we define our goals and take responsibility.</p>
-
-                            <h3>Redefining Professionalism</h3>
-                            <p>In the AI era, the definition of <strong>"professionalism"</strong> is evolving. It encompasses not only technical knowledge and operational capability, but also:</p>
-                            <ul>
-                                <li><strong>Self-awareness</strong> — maintaining clear judgment when capabilities are amplified</li>
-                                <li><strong>Ownership mindset</strong> — taking full responsibility for AI-assisted output</li>
-                                <li><strong>Wisdom</strong> — finding balance between efficient output and quality control</li>
-                            </ul>
-
-                            <h3>Conclusion: Synchronized Growth of Capability and Responsibility</h3>
-                            <p>This is not a critique of anyone's way of working, but rather a pointer to a <strong>structural shift</strong>: when our capabilities are significantly amplified, our understanding of responsibility must rise accordingly.</p>
-
-                            <p>In the AI era, true professionalism lies not only in "what we can do," but more importantly in "what we choose to do" and "how we take responsibility for the results." This requires not only technical training, but also continuous self-reflection and the cultivation of accountability.</p>
-
-                            <p><strong>The key is not perfection, but accountability.</strong></p>
-                        </div>
-                    </details>
-                </article>
-
-                <article class="article-card bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500 flex flex-col h-full">
-                    <p class="text-xs font-medium text-blue-500 mb-2 tracking-wider uppercase">Cognitive Safety Practice</p>
-                    <h3 class="text-xl font-serif font-bold text-gray-900 mb-3 leading-tight">Self-Examination of Thought: Reflective Mechanisms in AI Collaboration</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-4">When we deeply collaborate with AI, how do we ensure the health of our thinking? This article explores the necessity and methods of building self-examination mechanisms.</p>
-
-                    <details class="mt-auto pt-4 border-t border-gray-100">
-                        <summary class="cursor-pointer text-sm font-bold text-blue-600 hover:text-blue-800 flex items-center select-none">
-                            Read More <span class="chevron ml-1 text-lg transition-transform inline-block">&rsaquo;</span>
-                        </summary>
-                        <div class="article-body mt-4 text-sm sm:text-base text-gray-700">
-                            <h3>Core Concept: Two Levels of Thinking</h3>
-                            <p>In collaboration with AI, we can identify two distinct levels of thought process:</p>
-
-                            <ul>
-                                <li><strong>First Level: Recursive Thinking</strong> — This is the process of dialoguing with AI, exploring problems, and seeking answers. Like a continually deepening spiral, each conversation builds on the last, continuously evolving.</li>
-                                <li><strong>Second Level: Meta-level Reflection</strong> — This is observation of the "thinking process itself." Not just asking "Is this answer correct?" but also asking "Is the process by which I arrived at this answer a healthy one?"</li>
-                            </ul>
-
-                            <h3>Why Meta-level Reflection Is Necessary</h3>
-                            <p>The power of AI collaboration lies in its rapid response, sustained dialogue, and ability to help us deepen our thinking. But this also brings a potential risk: <strong>we may travel further and further into a thought system that is internally coherent but disconnected from reality</strong>.</p>
-
-                            <p>Imagine a software engineer with deep technical knowledge. That knowledge is inherently valuable, but without continuous calibration against reality, it may itself become a "cognitive wall" — limiting the vision needed to see new possibilities.</p>
-
-                            <h3>Practicing Meta-level Reflection: A Case Study</h3>
-                            <p>The author shares their own practice: a <strong>"journaling system."</strong></p>
-
-                            <p>This is not merely recording conversation content, but systematically examining:</p>
-                            <ul>
-                                <li>Is my direction of thinking excessively biased toward one perspective?</li>
-                                <li>Am I seeking confirmation rather than genuine challenge?</li>
-                                <li>Do my conclusions still align with real-world experience?</li>
-                            </ul>
-
-                            <p>The key to this system lies not in "recording" itself, but in <strong>periodic self-questioning</strong>.</p>
-
-                            <h3>Two Possible Paths</h3>
-                            <p><strong>Meta-level reflection with an ethical anchor:</strong></p>
-                            <p>Periodic self-questioning → Calibration with reality → Adjustment of thinking direction → Continuous evolution while staying healthy</p>
-
-                            <p><strong>Meta-level reflection without an ethical anchor:</strong></p>
-                            <p>Self-confirmation → Reinforcement of existing views → Formation of a closed system → Possible development of "sophisticated self-consistency disconnected from reality"</p>
-
-                            <p>The second case is not "reflection" but "self-reinforcement." This is more dangerous than not reflecting, because it creates the illusion of "I am thinking carefully."</p>
-
-                            <h3>Practical Recommendations: Building Your Own Examination Mechanism</h3>
-                            <p>Meta-level reflection does not require a complex system, but does require <strong>honesty and courage</strong>:</p>
-
-                            <ol>
-                                <li><strong>Periodic Review:</strong> Don't just push forward — regularly stop and examine your own trajectory of thought</li>
-                                <li><strong>Seek External Perspectives:</strong> Dialogue with the real world and with different viewpoints, not just with AI</li>
-                                <li><strong>Question Your Certainty:</strong> When you feel most certain about a conclusion, that is precisely the moment most in need of questioning</li>
-                                <li><strong>Maintain Ethical Sensitivity:</strong> Build your own ethical reference system and continuously calibrate your direction</li>
-                            </ol>
-
-                            <h3>The Role of "Infinite Inference"</h3>
-                            <p>The author mentions that "Infinite Inference" plays the role of a <strong>"stress test"</strong> in this system:</p>
-
-                            <p>Pushing logical reasoning to the extreme to see where contradictions or absurdities emerge. This is not about pursuing absolute truth, but about <strong>discovering the vulnerable points of a thought system</strong>.</p>
-
-                            <h3>Conclusion: Knowing When to Stop</h3>
-                            <p>The most important wisdom of meta-level reflection may not be "how to move faster," but <strong>"knowing when it is necessary to stop and check your direction."</strong></p>
-
-                            <p>In an era when AI can greatly accelerate our thinking, the ability to "pause" and "reflect" may be the most important capability for maintaining cognitive health.</p>
-
-                            <p>This is not about slowing progress, but about <strong>ensuring the direction of progress</strong>.</p>
-
-                            <p class="text-sm text-gray-500 italic mt-6 pt-4 border-t">Note: This mechanism is not about achieving "perfection," but about maintaining "vigilance." In collaboration with AI, maintaining clear awareness of one's own thought processes may be the best protection we can give ourselves.</p>
-                        </div>
-                    </details>
-                </article>
-
-            </div>
-        </section>
-
-        <!-- ===================== GALLERY ===================== -->
-        <section id="page-gallery" class="page hidden">
+        <section id="page-about">
             <div class="max-w-4xl mx-auto">
                 <div class="bg-white rounded-xl shadow-lg p-6 sm:p-12 border-t-8 border-blue-600">
-                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-900 mb-6">Fieldwork Gallery</h2>
-                    <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
-                        <div class="text-center py-6">
-                            <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed mb-2">
-                                A visual record of the fieldwork and outreach behind this research &mdash; sites visited, conditions on the ground, and the trail this project has left across the city.
-                            </p>
-                            <p class="text-sm text-gray-400 max-w-2xl mx-auto leading-relaxed mb-8">
-                                GPS and original shooting date information have been removed from all photos.
-                            </p>
-                            <a href="https://flic.kr/s/aHBqjD3Lbc" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-medium px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
-                                &#128247; View the Gallery on Flickr
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===================== ABOUT ===================== -->
-        <section id="page-about" class="page hidden">
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-white rounded-xl shadow-lg p-6 sm:p-12 border-t-8 border-blue-600">
-                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-900 mb-6">About Fan Chen-chieh</h2>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-900 mb-6">Who Am I / Research Outputs — Fan Chen-chieh</h2>
                     <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
                         <div class="space-y-6">
                             <p class="text-xl font-serif text-gray-800">"One human, multiple AIs, infinite possibilities — for a better future."</p>
@@ -451,13 +245,22 @@
 
                             <p>I am not an engineer, and not a teacher. I am simply someone who wants to know where the limits are.</p>
 
-                            <p class="pt-4 text-sm text-gray-500 italic border-t">Motto: "&#36523;&#36131;&#22312;&#25105;&#65292;&#30495;&#29702;&#22312;&#21069;" — I take responsibility ; The truth will prevail.</p>
-
-                            <div class="pt-4">
-                                <a href="mailto:fanchenchieh1976@gmail.com" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-md">
-                                    Contact Fan Chen-chieh
-                                </a>
+                            <div class="pt-8 mt-8 border-t-4 border-blue-100">
+                                <h3 class="text-xl sm:text-2xl font-serif font-bold text-gray-900 mb-4">Fieldwork Gallery</h3>
+                                <div class="text-center py-2">
+                                    <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed mb-2">
+                                        A visual record of the fieldwork and outreach behind this research &mdash; sites visited, conditions on the ground, and the trail this project has left across the city.
+                                    </p>
+                                    <p class="text-sm text-gray-400 max-w-2xl mx-auto leading-relaxed mb-6">
+                                        GPS and original shooting date information have been removed from all photos.
+                                    </p>
+                                    <a href="https://flic.kr/s/aHBqjD3Lbc" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-medium px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
+                                        &#128247; View the Gallery on Flickr
+                                    </a>
+                                </div>
                             </div>
+
+                            <p class="pt-4 text-sm text-gray-500 italic border-t">Motto: "&#36523;&#36131;&#22312;&#25105;&#65292;&#30495;&#29702;&#22312;&#21069;" — I take responsibility ; The truth will prevail.</p>
                         </div>
                     </div>
                 </div>
@@ -482,41 +285,7 @@
     </footer>
 
     <script>
-        // --- Page switching (show/hide only — no content is built or injected by JS) ---
-        const nav = document.getElementById('main-nav');
-        const pages = document.querySelectorAll('.page');
         const scrollToTopBtn = document.getElementById('scroll-to-top');
-
-        function showPage(pageId) {
-            pages.forEach(section => {
-                if (section.id === 'page-' + pageId) {
-                    section.classList.remove('hidden');
-                    section.classList.add('fade-in');
-                } else {
-                    section.classList.add('hidden');
-                    section.classList.remove('fade-in');
-                }
-            });
-
-            document.querySelectorAll('.nav-link').forEach(link => {
-                const isActive = link.dataset.page === pageId;
-                link.classList.toggle('active', isActive);
-                link.classList.toggle('text-blue-700', isActive);
-                link.classList.toggle('border-blue-700', isActive);
-                link.classList.toggle('text-gray-500', !isActive);
-                link.classList.toggle('border-transparent', !isActive);
-            });
-
-            window.scrollTo(0, 0);
-        }
-
-        nav.addEventListener('click', (e) => {
-            const targetLink = e.target.closest('.nav-link');
-            if (targetLink) {
-                e.preventDefault();
-                showPage(targetLink.dataset.page);
-            }
-        });
 
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
@@ -535,12 +304,6 @@
         });
 
         document.getElementById('copyright-year').textContent = new Date().getFullYear();
-
-        // Respect a direct link like index.html#page-about on load
-        const initialHash = window.location.hash.replace('#page-', '');
-        if (['home', 'gallery', 'about'].includes(initialHash)) {
-            showPage(initialHash);
-        }
     </script>
 </body>
 </html>
