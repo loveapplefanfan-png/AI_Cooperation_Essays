@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 原本寫在 index.html <style> 標籤裡的自訂樣式,搬到這裡一起編譯,
+   這樣 index.html 裡就不再需要任何 inline <style>,
+   CSP 的 style-src 之後就能拿掉 'unsafe-inline'。 */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc;
+    color: #334155;
+    scroll-behavior: smooth;
+}
+h1, h2, h3, h4, .font-serif {
+    font-family: 'Lora', serif;
+}
