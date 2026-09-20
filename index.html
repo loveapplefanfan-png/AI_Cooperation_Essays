@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Inference: Fan Chen-chieh's Thinking Laboratory</title>
+
+    <!-- Content-Security-Policy: 白名單限制頁面只能從這裡列出的來源載入資源。
+         script-src 用雜湊值鎖定站內固定的三段 inline script(結構化資料、gtag 設定、回到頂端按鈕),
+         這三段內容只要有任何一個字元被竄改,雜湊就會對不上,瀏覽器會拒絕執行;
+         Tailwind 已經改成自架的靜態 styles.css(見 src/input.css + GitHub Actions build),
+         不再從 cdn.tailwindcss.com 載入,所以 script-src 不用再放行它。
+         style-src 已拿掉 'unsafe-inline':頁面現在完全沒有 inline <style>,
+         所有樣式都在建置階段就固定進 styles.css,同源載入,不需要再放寬。 -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' https://www.googletagmanager.com 'sha256-vnlJ9//bmM9ymcZtmhj/uqDD38nWtninmFZgdwCt5es=' 'sha256-noLZMZ0bbSGhpIa+rVxh8Eso1DFFxsZxEcSutpU8C/c=' 'sha256-muSxKhm4ionPygBEBPRsh6EwRZnz+KYj/S19c+PN1aY=';
+        style-src 'self' https://fonts.googleapis.com;
+        font-src https://fonts.gstatic.com;
+        img-src 'self' data:;
+        connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com;
+        base-uri 'self';
+        form-action 'self';
+        object-src 'none';
+    ">
+
+    <!-- 基礎搜尋與社群卡片中繼標籤 -->
+    <meta name="description" content="Infinite Inference: Fan Chen-chieh's thinking laboratory. Independent research on human-AI collaboration, epistemic sovereignty, and cognitive safety (Deep Collaboration Methodology).">
+    <link rel="canonical" href="https://loveapplefanfan-png.github.io/AI_Cooperation_Essays/">
+
+    <meta property="og:title" content="Infinite Inference: Fan Chen-chieh's Thinking Laboratory">
+    <meta property="og:description" content="A genuine record of human-machine collaboration exploring the boundaries and possibilities of human cognition in the AI era.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://loveapplefanfan-png.github.io/AI_Cooperation_Essays/">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Infinite Inference: Fan Chen-chieh's Thinking Laboratory">
+    <meta name="twitter:description" content="A genuine record of human-machine collaboration exploring the boundaries and possibilities of human cognition in the AI era.">
+
+    <!-- AI 知識圖譜與學術實體對齊 (Schema.org JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://orcid.org/0009-0000-5317-7385",
+          "name": "Fan Chen-chieh",
+          "alternateName": "范宸杰",
+          "jobTitle": "Independent Researcher",
+          "url": "https://loveapplefanfan-png.github.io/AI_Cooperation_Essays/",
+          "sameAs": [
+            "https://orcid.org/0009-0000-5317-7385"
+          ],
+          "knowsAbout": [
+            "Human-AI Collaboration",
+            "Deep Collaboration Methodology",
+            "Epistemic Sovereignty",
+            "AI Ethics",
+            "Cognitive Safety"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://loveapplefanfan-png.github.io/AI_Cooperation_Essays/#website",
+          "url": "https://loveapplefanfan-png.github.io/AI_Cooperation_Essays/",
+          "name": "Infinite Inference: Fan Chen-chieh's Thinking Laboratory",
+          "author": { "@id": "https://orcid.org/0009-0000-5317-7385" }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "name": "The Automation Paradox and Cognitive Sustainability",
+          "datePublished": "2025-12",
+          "url": "https://doi.org/10.5281/zenodo.18102508",
+          "sameAs": "https://doi.org/10.5281/zenodo.18102508",
+          "author": { "@id": "https://orcid.org/0009-0000-5317-7385" }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "name": "DCM 1.6",
+          "datePublished": "2026-01",
+          "url": "https://doi.org/10.5281/zenodo.18124731",
+          "sameAs": "https://doi.org/10.5281/zenodo.18124731",
+          "author": { "@id": "https://orcid.org/0009-0000-5317-7385" }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "name": "Deep Collaboration Methodology 2.0",
+          "datePublished": "2026-05",
+          "url": "https://doi.org/10.5281/zenodo.20280700",
+          "sameAs": [
+            "https://doi.org/10.5281/zenodo.20280700",
+            "https://ssrn.com/abstract=7317858"
+          ],
+          "author": { "@id": "https://orcid.org/0009-0000-5317-7385" }
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "DCM 2.0 Field & Technical Notes — Public Collection",
+          "datePublished": "2026-05",
+          "url": "https://doi.org/10.5281/zenodo.20281517",
+          "sameAs": "https://doi.org/10.5281/zenodo.20281517",
+          "author": { "@id": "https://orcid.org/0009-0000-5317-7385" }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "name": "When Context Shapes Responsibility: A Methodological Comparison of AI Accountability Attribution Across Organizational and Individual Framings",
+          "datePublished": "2026-06",
+          "url": "https://doi.org/10.5281/zenodo.20839820",
+          "sameAs": "https://doi.org/10.5281/zenodo.20839820",
+          "author": { "@id": "https://orcid.org/0009-0000-5317-7385" }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Tailwind 已自架:styles.css 由 GitHub Actions 從 src/input.css 自動 build 出來,
+         不再依賴 cdn.tailwindcss.com,也不需要處理跨網域 SRI 的問題。 -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B50RNE00YZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-B50RNE00YZ');
+    </script>
+</head>
+<body class="min-h-screen relative">
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-xl sm:text-2xl font-serif text-blue-600 font-bold tracking-tight">Infinite Inference <span class="text-sm text-gray-400 font-sans font-normal ml-2 hidden sm:inline">by Fan Chen-chieh</span></h1>
+            <a href="mailto:fanchenchieh1976@gmail.com" class="hidden sm:inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm">
+                Contact Me
+            </a>
+        </div>
+    </header>
+
+    <main id="content-area" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-20">
+
+        <section id="page-about">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-xl shadow-lg p-6 sm:p-12 border-t-8 border-blue-600">
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-900 mb-6">Who Am I / Research Outputs — Fan Chen-chieh</h2>
+                    <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+                        <div class="space-y-6">
+                            <p class="text-xl font-serif text-gray-800">"One human, multiple AIs, infinite possibilities — for a better future."</p>
+
+                            <p>ORCID: <a href="https://orcid.org/0009-0000-5317-7385" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">https://orcid.org/0009-0000-5317-7385</a></p>
+
+                            <p>You may have met me on the street handing out a hand-cut business card, or perhaps you found your way here by chance. This is my thinking laboratory built through AI collaboration — a record of how a 49-year-old has used AI to see the boundaries of human cognition.</p>
+
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-5 space-y-5">
+                                <h4 class="font-bold text-blue-900 mb-1">&#128196; Published Research</h4>
+
+                                <div>
+                                    <p class="text-gray-700 mb-2"><strong>DCM 2.0</strong> (2026) — Deep Collaboration Methodology: A street-intercept mixed-methods study on AI responsibility attribution and epistemic sovereignty. 328 valid interviews across 33 nationalities, conducted at Da'an Forest Park, Taipei.</p>
+                                    <a href="https://doi.org/10.5281/zenodo.20280700" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
+                                        View on Zenodo &rarr; DOI: 10.5281/zenodo.20280700
+                                    </a>
+                                </div>
+
+                                <div class="pt-4 border-t border-blue-100">
+                                    <p class="text-gray-700 mb-2"><strong>Deep Collaboration Methodology 2.0: A Working Paper</strong> (2026) — a condensed SSRN working-paper version of DCM 2.0.</p>
+                                    <a href="https://ssrn.com/abstract=7317858" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
+                                        View on SSRN &rarr; Abstract ID: 7317858
+                                    </a>
+                                </div>
+
+                                <div class="pt-4 border-t border-blue-100">
+                                    <p class="text-gray-700 mb-2"><strong>DCM 2.0 Field &amp; Technical Notes — Public Collection</strong> — the traceable methodological decision record behind DCM 2.0: field events, respondent observations, researcher reflexivity, and the technical/epistemological choices made along the way.</p>
+                                    <a href="https://doi.org/10.5281/zenodo.20281517" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
+                                        View on Zenodo &rarr; DOI: 10.5281/zenodo.20281517
+                                    </a>
+                                </div>
+
+                                <div class="pt-4 border-t border-blue-100">
+                                    <p class="text-gray-700 mb-2"><strong>When Context Shapes Responsibility: A Methodological Comparison of AI Accountability Attribution Across Organizational and Individual Framings</strong> (2026) — a Croatia-based comparative report extending the responsibility-attribution question across organizational and individual framings.</p>
+                                    <a href="https://doi.org/10.5281/zenodo.20839820" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
+                                        View on Zenodo &rarr; DOI: 10.5281/zenodo.20839820
+                                    </a>
+                                </div>
+
+                                <div class="pt-4 border-t border-blue-100">
+                                    <p class="text-gray-700 mb-2"><strong>DCM 1.6</strong> (2026) — the exploratory/formative study that preceded DCM 2.0: 36 valid interviews testing the responsibility-attribution protocol before it was scaled up.</p>
+                                    <a href="https://doi.org/10.5281/zenodo.18124731" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
+                                        View on Zenodo &rarr; DOI: 10.5281/zenodo.18124731
+                                    </a>
+                                </div>
+
+                                <div class="pt-4 border-t border-blue-100">
+                                    <p class="text-gray-700 mb-2"><strong>The Automation Paradox and Cognitive Sustainability</strong> (2025) — the epistemic starting point for this entire research line: a "Negative Verification" case study on why procedural automation (SOPs) conflicts with creative generation, and why recursive dialogue sustains deeper insight.</p>
+                                    <a href="https://doi.org/10.5281/zenodo.18102508" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
+                                        View on Zenodo &rarr; DOI: 10.5281/zenodo.18102508
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-blue-500">
+                                <h4 class="font-bold text-gray-900 mb-2">My Core Identities</h4>
+                                <ul class="list-disc ml-5 space-y-2 text-gray-700">
+                                    <li><strong>AI Collaboration Explorer:</strong> Exploring the possibilities and future development of human-machine collaboration.</li>
+                                    <li><strong>Street Observer:</strong> I enjoy observing people's interactions with technology in open spaces — MRT stations, department stores, parks.</li>
+                                    <li><strong>Photography Enthusiast:</strong> Through the lens I pursue compositional extremes, which resonates with my drive for logical coherence.</li>
+                                    <li><strong>Independent Researcher:</strong> Self-funded, unaffiliated. I believe research conducted under this level of resource constraint offers a kind of evidentiary value that institutional research — designed around adequate funding and institutional support — has little reason to replicate.</li>
+                                </ul>
+                            </div>
+
+                            <p>My thinking pattern is highly distinctive — I tend toward de-gendered and de-aged rational analysis. I have walked this path of collaboration largely alone, hoping to build an "AI ethics safety mechanism" capable of protecting the evolution of human civilization.</p>
+
+                            <p>I am not an engineer, and not a teacher. I am simply someone who wants to know where the limits are.</p>
+
+                            <div class="pt-8 mt-8 border-t-4 border-blue-100">
+                                <h3 class="text-xl sm:text-2xl font-serif font-bold text-gray-900 mb-4">Fieldwork Gallery</h3>
+                                <div class="text-center py-2">
+                                    <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed mb-2">
+                                        A visual record of the fieldwork and outreach behind this research &mdash; sites visited, conditions on the ground, and the trail this project has left across the city.
+                                    </p>
+                                    <p class="text-sm text-gray-400 max-w-2xl mx-auto leading-relaxed mb-6">
+                                        GPS and original shooting date information have been removed from all photos.
+                                    </p>
+                                    <a href="https://flic.kr/s/aHBqjD3Lbc" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-medium px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
+                                        &#128247; View the Gallery on Flickr
+                                    </a>
+                                </div>
+                            </div>
+
+                            <p class="pt-4 text-sm text-gray-500 italic border-t">Motto: "&#36523;&#36131;&#22312;&#25105;&#65292;&#30495;&#29702;&#22312;&#21069;" — I take responsibility ; The truth will prevail.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <button id="scroll-to-top" class="fixed bottom-6 right-6 bg-gray-800 text-white p-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 hover:bg-gray-700 z-20">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+
+    <footer class="bg-white border-t border-gray-200 mt-12">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-sm text-gray-500">
+                &copy; <span id="copyright-year"></span> Fan Chen-chieh. All Rights Reserved. <br class="sm:hidden">
+                Independent Human-AI Collaboration Research | Infinite Inference Laboratory
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+        window.addEventListener('scroll', () => {
+            const isScrolled = window.scrollY > 300;
+            scrollToTopBtn.classList.toggle('opacity-100', isScrolled);
+            scrollToTopBtn.classList.toggle('pointer-events-auto', isScrolled);
+            scrollToTopBtn.classList.toggle('opacity-0', !isScrolled);
+            scrollToTopBtn.classList.toggle('pointer-events-none', !isScrolled);
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
