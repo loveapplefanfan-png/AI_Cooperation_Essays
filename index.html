@@ -14,7 +14,7 @@
          所有樣式都在建置階段就固定進 styles.css,同源載入,不需要再放寬。 -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' https://www.googletagmanager.com 'sha256-vnlJ9//bmM9ymcZtmhj/uqDD38nWtninmFZgdwCt5es=' 'sha256-noLZMZ0bbSGhpIa+rVxh8Eso1DFFxsZxEcSutpU8C/c=' 'sha256-muSxKhm4ionPygBEBPRsh6EwRZnz+KYj/S19c+PN1aY=';
+        script-src 'self' https://www.googletagmanager.com 'sha256-vnlJ9//bmM9ymcZtmhj/uqDD38nWtninmFZgdwCt5es=' 'sha256-GmydUQj+Yh2lNc8is7E0UsWUoH678ysRXqR/fCHtCCQ=' 'sha256-muSxKhm4ionPygBEBPRsh6EwRZnz+KYj/S19c+PN1aY=';
         style-src 'self' https://fonts.googleapis.com;
         font-src https://fonts.gstatic.com;
         img-src 'self' data:;
@@ -32,10 +32,19 @@
     <meta property="og:description" content="A genuine record of human-machine collaboration exploring the boundaries and possibilities of human cognition in the AI era.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://loveapplefanfan-png.github.io/AI_Cooperation_Essays/">
+    <meta property="og:image" content="https://loveapplefanfan-png.github.io/AI_Cooperation_Essays/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Infinite Inference — Fan Chen-chieh's Thinking Laboratory. Independent research on human-AI collaboration.">
 
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Infinite Inference: Fan Chen-chieh's Thinking Laboratory">
     <meta name="twitter:description" content="A genuine record of human-machine collaboration exploring the boundaries and possibilities of human cognition in the AI era.">
+    <meta name="twitter:image" content="https://loveapplefanfan-png.github.io/AI_Cooperation_Essays/og-image.png">
+
+    <!-- 網站小圖示:現代瀏覽器用 SVG,iOS 主畫面捷徑用 PNG -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
     <!-- AI 知識圖譜與學術實體對齊 (Schema.org JSON-LD) -->
     <script type="application/ld+json">
@@ -120,20 +129,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js)
+         隱私設定:GA4 本身不記錄、不儲存 IP;anonymize_ip 為相容舊版保留。
+         另外關閉 Google 信號(跨裝置追蹤)與廣告個人化,只做基本流量統計。
+         注意:這段 inline script 若有任何改動,CSP 雜湊值(本檔 meta + _headers)都要重算。 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B50RNE00YZ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-B50RNE00YZ');
+      gtag('config', 'G-B50RNE00YZ', {
+        anonymize_ip: true,
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false
+      });
     </script>
 </head>
 <body class="min-h-screen relative">
     <header class="bg-white shadow-sm sticky top-0 z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center gap-3">
             <h1 class="text-xl sm:text-2xl font-serif text-blue-600 font-bold tracking-tight">Infinite Inference <span class="text-sm text-gray-400 font-sans font-normal ml-2 hidden sm:inline">by Fan Chen-chieh</span></h1>
-            <a href="mailto:fanchenchieh1976@gmail.com" class="hidden sm:inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm">
+            <a href="mailto:fanchenchieh1976@gmail.com" class="inline-flex shrink-0 items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm">
                 Contact Me
             </a>
         </div>
@@ -151,56 +167,68 @@
 
                             <p>ORCID: <a href="https://orcid.org/0009-0000-5317-7385" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">https://orcid.org/0009-0000-5317-7385</a></p>
 
-                            <p>You may have met me on the street handing out a hand-cut business card, or perhaps you found your way here by chance. This is my thinking laboratory built through AI collaboration — a record of how a 49-year-old has used AI to see the boundaries of human cognition.</p>
+                            <p>You may have met me on the street handing out a hand-cut business card, or perhaps you found your way here by chance. This is my thinking laboratory built through AI collaboration — a record of how one person has used AI to see the boundaries of human cognition.</p>
 
-                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-5 space-y-5">
-                                <h4 class="font-bold text-blue-900 mb-1">&#128196; Published Research</h4>
+                            <section aria-labelledby="published-research" class="space-y-5">
+                                <h3 id="published-research" class="text-xl sm:text-2xl font-serif font-bold text-gray-900">&#128196; Published Research</h3>
 
-                                <div>
-                                    <p class="text-gray-700 mb-2"><strong>DCM 2.0</strong> (2026) — Deep Collaboration Methodology: A street-intercept mixed-methods study on AI responsibility attribution and epistemic sovereignty. 328 valid interviews across 33 nationalities, conducted at Da'an Forest Park, Taipei.</p>
-                                    <a href="https://doi.org/10.5281/zenodo.20280700" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
-                                        View on Zenodo &rarr; DOI: 10.5281/zenodo.20280700
-                                    </a>
+                                <!-- 主研究:DCM 2.0(正式版 + SSRN 精簡版) -->
+                                <article class="bg-white border-2 border-blue-600 rounded-xl shadow-md p-5 sm:p-6">
+                                    <p class="inline-block text-xs font-sans font-bold uppercase tracking-wider text-white bg-blue-600 rounded px-2 py-1 mb-3">Main Study</p>
+                                    <h4 class="text-xl sm:text-2xl font-serif font-bold text-gray-900 mb-2">DCM 2.0 — Deep Collaboration Methodology <span class="text-base font-sans font-normal text-gray-500">(2026)</span></h4>
+                                    <p class="text-gray-700 mb-4">A street-intercept mixed-methods study on AI responsibility attribution and epistemic sovereignty. 328 valid interviews across 33 nationalities, conducted at Da'an Forest Park, Taipei.</p>
+                                    <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3">
+                                        <a href="https://doi.org/10.5281/zenodo.20280700" target="_blank" rel="noopener noreferrer" class="inline-block text-center text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
+                                            Full study on Zenodo &rarr; DOI: 10.5281/zenodo.20280700
+                                        </a>
+                                        <a href="https://ssrn.com/abstract=7317858" target="_blank" rel="noopener noreferrer" class="inline-block text-center text-sm font-medium text-blue-700 bg-white border border-blue-600 hover:bg-blue-50 px-4 py-2 rounded transition-colors">
+                                            Working paper on SSRN &rarr; Abstract ID: 7317858
+                                        </a>
+                                    </div>
+                                    <p class="text-sm text-gray-500 mt-3">The SSRN version, <em>Deep Collaboration Methodology 2.0: A Working Paper</em>, is a condensed version of the full study.</p>
+                                </article>
+
+                                <!-- 伴隨與延伸研究 -->
+                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-5 space-y-5">
+                                    <h4 class="font-bold text-blue-900">Companion &amp; Follow-up Work</h4>
+
+                                    <div>
+                                        <p class="text-gray-700 mb-2"><strong>DCM 2.0 Field &amp; Technical Notes — Public Collection</strong> — the traceable methodological decision record behind DCM 2.0: field events, respondent observations, researcher reflexivity, and the technical/epistemological choices made along the way.</p>
+                                        <a href="https://doi.org/10.5281/zenodo.20281517" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
+                                            View on Zenodo &rarr; DOI: 10.5281/zenodo.20281517
+                                        </a>
+                                    </div>
+
+                                    <div class="pt-4 border-t border-blue-100">
+                                        <p class="text-gray-700 mb-2"><strong>When Context Shapes Responsibility: A Methodological Comparison of AI Accountability Attribution Across Organizational and Individual Framings</strong> (2026) — a Croatia-based comparative report extending the responsibility-attribution question across organizational and individual framings.</p>
+                                        <a href="https://doi.org/10.5281/zenodo.20839820" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
+                                            View on Zenodo &rarr; DOI: 10.5281/zenodo.20839820
+                                        </a>
+                                    </div>
                                 </div>
 
-                                <div class="pt-4 border-t border-blue-100">
-                                    <p class="text-gray-700 mb-2"><strong>Deep Collaboration Methodology 2.0: A Working Paper</strong> (2026) — a condensed SSRN working-paper version of DCM 2.0.</p>
-                                    <a href="https://ssrn.com/abstract=7317858" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
-                                        View on SSRN &rarr; Abstract ID: 7317858
-                                    </a>
-                                </div>
+                                <!-- 前期研究 -->
+                                <div class="bg-gray-50 border border-gray-200 rounded-lg p-5 space-y-5">
+                                    <h4 class="font-bold text-gray-900">Earlier Work</h4>
 
-                                <div class="pt-4 border-t border-blue-100">
-                                    <p class="text-gray-700 mb-2"><strong>DCM 2.0 Field &amp; Technical Notes — Public Collection</strong> — the traceable methodological decision record behind DCM 2.0: field events, respondent observations, researcher reflexivity, and the technical/epistemological choices made along the way.</p>
-                                    <a href="https://doi.org/10.5281/zenodo.20281517" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
-                                        View on Zenodo &rarr; DOI: 10.5281/zenodo.20281517
-                                    </a>
-                                </div>
+                                    <div>
+                                        <p class="text-gray-700 mb-2"><strong>DCM 1.6</strong> (2026) — the exploratory/formative study that preceded DCM 2.0: 36 valid interviews testing the responsibility-attribution protocol before it was scaled up.</p>
+                                        <a href="https://doi.org/10.5281/zenodo.18124731" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
+                                            View on Zenodo &rarr; DOI: 10.5281/zenodo.18124731
+                                        </a>
+                                    </div>
 
-                                <div class="pt-4 border-t border-blue-100">
-                                    <p class="text-gray-700 mb-2"><strong>When Context Shapes Responsibility: A Methodological Comparison of AI Accountability Attribution Across Organizational and Individual Framings</strong> (2026) — a Croatia-based comparative report extending the responsibility-attribution question across organizational and individual framings.</p>
-                                    <a href="https://doi.org/10.5281/zenodo.20839820" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
-                                        View on Zenodo &rarr; DOI: 10.5281/zenodo.20839820
-                                    </a>
+                                    <div class="pt-4 border-t border-gray-200">
+                                        <p class="text-gray-700 mb-2"><strong>The Automation Paradox and Cognitive Sustainability</strong> (2025) — the epistemic starting point for this entire research line: a "Negative Verification" case study on why procedural automation (SOPs) conflicts with creative generation, and why recursive dialogue sustains deeper insight.</p>
+                                        <a href="https://doi.org/10.5281/zenodo.18102508" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
+                                            View on Zenodo &rarr; DOI: 10.5281/zenodo.18102508
+                                        </a>
+                                    </div>
                                 </div>
-
-                                <div class="pt-4 border-t border-blue-100">
-                                    <p class="text-gray-700 mb-2"><strong>DCM 1.6</strong> (2026) — the exploratory/formative study that preceded DCM 2.0: 36 valid interviews testing the responsibility-attribution protocol before it was scaled up.</p>
-                                    <a href="https://doi.org/10.5281/zenodo.18124731" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
-                                        View on Zenodo &rarr; DOI: 10.5281/zenodo.18124731
-                                    </a>
-                                </div>
-
-                                <div class="pt-4 border-t border-blue-100">
-                                    <p class="text-gray-700 mb-2"><strong>The Automation Paradox and Cognitive Sustainability</strong> (2025) — the epistemic starting point for this entire research line: a "Negative Verification" case study on why procedural automation (SOPs) conflicts with creative generation, and why recursive dialogue sustains deeper insight.</p>
-                                    <a href="https://doi.org/10.5281/zenodo.18102508" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
-                                        View on Zenodo &rarr; DOI: 10.5281/zenodo.18102508
-                                    </a>
-                                </div>
-                            </div>
+                            </section>
 
                             <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-blue-500">
-                                <h4 class="font-bold text-gray-900 mb-2">My Core Identities</h4>
+                                <h3 class="font-bold text-gray-900 mb-2">My Core Identities</h3>
                                 <ul class="list-disc ml-5 space-y-2 text-gray-700">
                                     <li><strong>AI Collaboration Explorer:</strong> Exploring the possibilities and future development of human-machine collaboration.</li>
                                     <li><strong>Street Observer:</strong> I enjoy observing people's interactions with technology in open spaces — MRT stations, department stores, parks.</li>
@@ -228,7 +256,7 @@
                                 </div>
                             </div>
 
-                            <p class="pt-4 text-sm text-gray-500 italic border-t">Motto: "&#36523;&#36131;&#22312;&#25105;&#65292;&#30495;&#29702;&#22312;&#21069;" — I take responsibility ; The truth stands before all.</p>
+                            <p class="pt-4 text-sm text-gray-500 italic border-t">Motto: "<span lang="zh-Hant">&#36523;&#36131;&#22312;&#25105;&#65292;&#30495;&#29702;&#22312;&#21069;</span>" — I take responsibility ; The truth stands before all.</p>
                         </div>
                     </div>
                 </div>
@@ -237,8 +265,8 @@
 
     </main>
 
-    <button id="scroll-to-top" class="fixed bottom-6 right-6 bg-gray-800 text-white p-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 hover:bg-gray-700 z-20">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <button id="scroll-to-top" type="button" aria-label="Back to top" class="fixed bottom-6 right-6 bg-gray-800 text-white p-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 hover:bg-gray-700 z-20">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
     </button>
@@ -248,6 +276,9 @@
             <p class="text-center text-sm text-gray-500">
                 &copy; <span id="copyright-year"></span> Fan Chen-chieh. All Rights Reserved. <br class="sm:hidden">
                 Independent Human-AI Collaboration Research | Infinite Inference Laboratory
+            </p>
+            <p class="text-center text-xs text-gray-400 mt-2">
+                Privacy: this site uses Google Analytics to count visits (cookies; IP anonymized, no ad personalization or cross-device tracking). No other personal data is collected.
             </p>
         </div>
     </footer>
