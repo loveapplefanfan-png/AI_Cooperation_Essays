@@ -1,0 +1,7 @@
+# Cloudflare Workers 靜態資源排除清單(語法同 .gitignore)
+# 這些是原始碼或設定檔,只需要留在 repo 裡,不需要公開成網址。
+.assetsignore
+.github/
+src/
+tailwind.config.js
+README.md
