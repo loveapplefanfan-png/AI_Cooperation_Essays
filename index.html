@@ -6,15 +6,15 @@
     <title>Infinite Inference: Fan Chen-chieh's Thinking Laboratory</title>
 
     <!-- Content-Security-Policy: 白名單限制頁面只能從這裡列出的來源載入資源。
-         script-src 用雜湊值鎖定站內固定的三段 inline script(結構化資料、gtag 設定、回到頂端按鈕),
-         這三段內容只要有任何一個字元被竄改,雜湊就會對不上,瀏覽器會拒絕執行;
+         script-src 用雜湊值鎖定站內固定的兩段 inline script(結構化資料、回到頂端按鈕),
+         這兩段內容只要有任何一個字元被竄改,雜湊就會對不上,瀏覽器會拒絕執行;
          Tailwind 已經改成自架的靜態 styles.css(見 src/input.css + GitHub Actions build),
          不再從 cdn.tailwindcss.com 載入,所以 script-src 不用再放行它。
          style-src 已拿掉 'unsafe-inline':頁面現在完全沒有 inline <style>,
          所有樣式都在建置階段就固定進 styles.css,同源載入,不需要再放寬。 -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' https://www.googletagmanager.com 'sha256-vnlJ9//bmM9ymcZtmhj/uqDD38nWtninmFZgdwCt5es=' 'sha256-GmydUQj+Yh2lNc8is7E0UsWUoH678ysRXqR/fCHtCCQ=' 'sha256-muSxKhm4ionPygBEBPRsh6EwRZnz+KYj/S19c+PN1aY=';
+        script-src 'self' https://www.googletagmanager.com 'sha256-vnlJ9//bmM9ymcZtmhj/uqDD38nWtninmFZgdwCt5es=' 'sha256-muSxKhm4ionPygBEBPRsh6EwRZnz+KYj/S19c+PN1aY=';
         style-src 'self' https://fonts.googleapis.com;
         font-src https://fonts.gstatic.com;
         img-src 'self' data:;
@@ -129,21 +129,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Google tag (gtag.js)
-         隱私設定:GA4 本身不記錄、不儲存 IP;anonymize_ip 為相容舊版保留。
-         另外關閉 Google 信號(跨裝置追蹤)與廣告個人化,只做基本流量統計。
-         注意:這段 inline script 若有任何改動,CSP 雜湊值(本檔 meta + _headers)都要重算。 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B50RNE00YZ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-B50RNE00YZ', {
-        anonymize_ip: true,
-        allow_google_signals: false,
-        allow_ad_personalization_signals: false
-      });
-    </script>
+    <!-- Cookie 同意 + Google Analytics:GA 只在訪客按下 Accept 後才載入(見 consent.js)。
+         同源外部檔案,CSP 的 script-src 'self' 已放行,不需要雜湊值。 -->
+    <script src="consent.js" defer></script>
 </head>
 <body class="min-h-screen relative">
     <header class="bg-white shadow-sm sticky top-0 z-10">
@@ -278,10 +266,25 @@
                 Independent Human-AI Collaboration Research | Infinite Inference Laboratory
             </p>
             <p class="text-center text-xs text-gray-400 mt-2">
-                Privacy: this site uses Google Analytics to count visits (cookies; IP anonymized, no ad personalization or cross-device tracking). No other personal data is collected.
+                Privacy: Google Analytics runs only if you accept cookies (IP anonymized, no ad personalization or cross-device tracking). No other personal data is collected.
+                <button id="cookie-settings" type="button" class="underline hover:text-gray-600">Cookie settings</button>
             </p>
         </div>
     </footer>
+
+    <!-- Cookie 同意橫幅:預設隱藏,由 consent.js 決定是否顯示。Accept 與 Decline 同樣醒目,拒絕和同意一樣容易。 -->
+    <div id="cookie-banner" role="dialog" aria-live="polite" aria-labelledby="cookie-banner-title" class="hidden fixed inset-x-0 bottom-0 z-30 bg-white border-t border-gray-200 shadow-lg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+            <p class="text-sm text-gray-700 flex-1">
+                <strong id="cookie-banner-title" class="text-gray-900">Cookies &amp; analytics.</strong>
+                May I use Google Analytics cookies to count visits? IP addresses are anonymized, with no ad personalization or cross-device tracking. Nothing is loaded unless you accept.
+            </p>
+            <div class="flex gap-3 shrink-0">
+                <button id="cookie-decline" type="button" class="flex-1 sm:flex-none text-sm font-medium text-blue-700 bg-white border border-blue-600 hover:bg-blue-50 px-4 py-2 rounded transition-colors">Decline</button>
+                <button id="cookie-accept" type="button" class="flex-1 sm:flex-none text-sm font-medium text-white bg-blue-600 border border-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">Accept</button>
+            </div>
+        </div>
+    </div>
 
     <script>
         const scrollToTopBtn = document.getElementById('scroll-to-top');
