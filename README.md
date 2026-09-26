@@ -34,3 +34,5 @@ When you change an inline `<script>` in `index.html`, recompute its SHA-256 hash
 ## License
 
 © Fan Chen-chieh. All Rights Reserved.
+
+The license above applies only to this repository's website source code (HTML/CSS/JS). Licensing for the research content itself (papers, notes, data) is stated on their respective DOI pages (e.g. CC BY-NC 4.0 on Zenodo).
