@@ -19,17 +19,18 @@ The full list of outputs is on the website.
 
 | Path | Purpose |
 |---|---|
-| `index.html` | The single-page website |
+| `index.html` | The home page |
+| `research-log.html` | Research Log: a timeline of published outputs, linked from the home page |
 | `styles.css` | Compiled stylesheet, rebuilt automatically by GitHub Actions. Do not edit it by hand |
 | `src/input.css`, `tailwind.config.js` | Tailwind CSS source and configuration |
 | `consent.js` | Cookie consent. Google Analytics loads only after the visitor accepts |
 | `_headers` | Security headers for Cloudflare |
 | `.assetsignore` | Files kept in the repo but not published to the website |
-| `favicon.svg`, `apple-touch-icon.png`, `og-image.png` | Site icons and social preview image |
+| `favicon.svg`, `apple-touch-icon.png`, `og-image.png`, `og-image-log.png` | Site icons and social preview images (home page and Research Log) |
 | `google403c2e7c9e0e1475.html` | Google Search Console verification. Do not delete it |
-| `.github/workflows/tailwind.yml` | Rebuilds `styles.css` on every push to `main` |
+| `.github/workflows/tailwind.yml` | Rebuilds `styles.css` on every push to `main` that changes a page or the Tailwind source |
 
-When you change an inline `<script>` in `index.html`, recompute its SHA-256 hash. Then update the hash in both the Content-Security-Policy `<meta>` tag and `_headers`. Otherwise the browser blocks the script.
+When you change an inline `<script>` in `index.html` or `research-log.html`, recompute its SHA-256 hash. Then update the hash in the Content-Security-Policy `<meta>` tag of both pages and in `_headers`. The two pages share the same back-to-top script, so they share its hash. Otherwise the browser blocks the script.
 
 ## License
 
