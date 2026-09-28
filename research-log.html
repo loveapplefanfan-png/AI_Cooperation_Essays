@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Log | Infinite Inference</title>
+
+    <!-- Content-Security-Policy:與 index.html 相同的白名單。
+         本頁唯一的 inline script(回到頂端按鈕 + 版權年份)與 index.html 那段逐字相同,
+         所以沿用同一個雜湊值;改動那段 script 時,兩頁與 _headers 的雜湊都要一起更新。 -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' https://www.googletagmanager.com 'sha256-vnlJ9//bmM9ymcZtmhj/uqDD38nWtninmFZgdwCt5es=' 'sha256-muSxKhm4ionPygBEBPRsh6EwRZnz+KYj/S19c+PN1aY=';
+        style-src 'self' https://fonts.googleapis.com;
+        font-src https://fonts.gstatic.com;
+        img-src 'self' data:;
+        connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com;
+        base-uri 'self';
+        form-action 'self';
+        object-src 'none';
+    ">
+
+    <!-- 基礎搜尋與社群卡片中繼標籤 -->
+    <meta name="description" content="Research Log: a timeline of published research outputs from Infinite Inference, Fan Chen-chieh's thinking laboratory. Only items with a DOI or a clear public release record are listed.">
+    <link rel="canonical" href="https://loveapplefanfan-png.github.io/AI_Cooperation_Essays/research-log.html">
+
+    <meta property="og:title" content="Research Log | Infinite Inference">
+    <meta property="og:description" content="Infinite Inference — a timeline of published research outputs. Only items with a DOI or a clear public release record are listed.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://loveapplefanfan-png.github.io/AI_Cooperation_Essays/research-log.html">
+    <meta property="og:image" content="https://loveapplefanfan-png.github.io/AI_Cooperation_Essays/og-image-log.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Research Log — Infinite Inference: a timeline of published research outputs.">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Research Log | Infinite Inference">
+    <meta name="twitter:description" content="Infinite Inference — a timeline of published research outputs. Only items with a DOI or a clear public release record are listed.">
+    <meta name="twitter:image" content="https://loveapplefanfan-png.github.io/AI_Cooperation_Essays/og-image-log.png">
+
+    <!-- 網站小圖示:現代瀏覽器用 SVG,iOS 主畫面捷徑用 PNG -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Cookie 同意 + Google Analytics:與 index.html 共用同一份 consent.js,
+         訪客在任一頁做的選擇(存在 localStorage)兩頁通用。 -->
+    <script src="consent.js" defer></script>
+</head>
+<body class="min-h-screen relative">
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center gap-3">
+            <p class="text-xl sm:text-2xl font-serif text-blue-600 font-bold tracking-tight"><a href="./" class="hover:text-blue-700">Infinite Inference</a> <span class="text-sm text-gray-400 font-sans font-normal ml-2 hidden sm:inline">by Fan Chen-chieh</span></p>
+            <a href="mailto:fanchenchieh1976@gmail.com" class="inline-flex shrink-0 items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm">
+                Contact Me
+            </a>
+        </div>
+    </header>
+
+    <main id="content-area" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-20">
+
+        <section id="page-research-log">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-xl shadow-lg p-6 sm:p-12 border-t-8 border-blue-600">
+                    <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+                        <div class="space-y-6">
+                            <p class="text-sm"><a href="./" class="text-blue-600 hover:underline">&larr; Back to Home</a></p>
+
+                            <div>
+                                <h1 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900">Research Log</h1>
+                                <p class="mt-2 text-gray-500">Infinite Inference — a timeline of published research outputs</p>
+                            </div>
+
+                            <p>Only published, verifiable items are listed here: each has a DOI or a clear public release record. Entries run from newest to oldest.</p>
+
+                            <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm text-gray-600 flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-6">
+                                <p><span class="inline-block text-xs font-bold text-white bg-blue-600 rounded px-2 py-0.5 mr-2">Research</span>Research output</p>
+                                <p><span class="inline-block text-xs font-bold text-gray-700 bg-gray-200 rounded px-2 py-0.5 mr-2">Website</span>Website changes that affect readers</p>
+                            </div>
+
+                            <!-- 2026 -->
+                            <section aria-labelledby="year-2026" class="space-y-4">
+                                <h2 id="year-2026" class="pt-4 text-xl sm:text-2xl font-serif font-bold text-gray-900">2026</h2>
+
+                                <ol class="border-l-2 border-blue-200 ml-2 space-y-6">
+                                    <li class="relative pl-6">
+                                        <span class="absolute -left-2 top-2 w-3.5 h-3.5 rounded-full bg-white border-2 border-gray-400" aria-hidden="true"></span>
+                                        <p class="text-sm text-gray-500"><time datetime="2026-09">2026-09</time> <span class="inline-block text-xs font-bold text-gray-700 bg-gray-200 rounded px-2 py-0.5 ml-2">Website</span></p>
+                                        <h3 class="mt-1 font-bold text-gray-900">Site migration</h3>
+                                        <p class="mt-1 text-gray-700">Added a Cloudflare Pages mirror site, with a major overhaul of the page structure and security.</p>
+                                    </li>
+
+                                    <li class="relative pl-6">
+                                        <span class="absolute -left-2 top-2 w-3.5 h-3.5 rounded-full bg-blue-600" aria-hidden="true"></span>
+                                        <p class="text-sm text-gray-500"><time datetime="2026-08">2026-08</time> <span class="inline-block text-xs font-bold text-white bg-blue-600 rounded px-2 py-0.5 ml-2">Research</span></p>
+                                        <h3 class="mt-1 font-bold text-gray-900">DCM 2.0 — SSRN condensed version</h3>
+                                        <p class="mt-1 text-gray-700"><em>Deep Collaboration Methodology 2.0: A Working Paper</em></p>
+                                        <a href="https://ssrn.com/abstract=7317858" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-sm font-medium text-blue-600 hover:underline">SSRN: 7317858 &rarr;</a>
+                                    </li>
+
+                                    <li class="relative pl-6">
+                                        <span class="absolute -left-2 top-2 w-3.5 h-3.5 rounded-full bg-blue-600" aria-hidden="true"></span>
+                                        <p class="text-sm text-gray-500"><time datetime="2026-06">2026-06</time> <span class="inline-block text-xs font-bold text-white bg-blue-600 rounded px-2 py-0.5 ml-2">Research</span></p>
+                                        <h3 class="mt-1 font-bold text-gray-900">Croatia comparative report</h3>
+                                        <p class="mt-1 text-gray-700"><em>When Context Shapes Responsibility: A Methodological Comparison of AI Accountability Attribution Across Organizational and Individual Framings</em></p>
+                                        <a href="https://doi.org/10.5281/zenodo.20839820" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-sm font-medium text-blue-600 hover:underline">DOI: 10.5281/zenodo.20839820 &rarr;</a>
+                                    </li>
+
+                                    <li class="relative pl-6">
+                                        <span class="absolute -left-2 top-2 w-3.5 h-3.5 rounded-full bg-blue-600" aria-hidden="true"></span>
+                                        <p class="text-sm text-gray-500"><time datetime="2026-05">2026-05</time> <span class="inline-block text-xs font-bold text-white bg-blue-600 rounded px-2 py-0.5 ml-2">Research</span></p>
+                                        <h3 class="mt-1 font-bold text-gray-900">DCM 2.0 — Full study (main study)</h3>
+                                        <p class="mt-1 text-gray-700">A street-intercept mixed-methods study: 328 valid interviews across 33 nationalities, conducted at Da&#39;an Forest Park, Taipei.</p>
+                                        <a href="https://doi.org/10.5281/zenodo.20280700" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-sm font-medium text-blue-600 hover:underline">DOI: 10.5281/zenodo.20280700 &rarr;</a>
+                                    </li>
+
+                                    <li class="relative pl-6">
+                                        <span class="absolute -left-2 top-2 w-3.5 h-3.5 rounded-full bg-blue-600" aria-hidden="true"></span>
+                                        <p class="text-sm text-gray-500"><time datetime="2026-05">2026-05</time> <span class="inline-block text-xs font-bold text-white bg-blue-600 rounded px-2 py-0.5 ml-2">Research</span></p>
+                                        <h3 class="mt-1 font-bold text-gray-900">DCM 2.0 Field &amp; Technical Notes — Public Collection</h3>
+                                        <p class="mt-1 text-gray-700">A traceable record of methodological decisions: field events, respondent observations, researcher reflexivity, and technical and epistemological choices.</p>
+                                        <a href="https://doi.org/10.5281/zenodo.20281517" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-sm font-medium text-blue-600 hover:underline">DOI: 10.5281/zenodo.20281517 &rarr;</a>
+                                    </li>
+
+                                    <li class="relative pl-6">
+                                        <span class="absolute -left-2 top-2 w-3.5 h-3.5 rounded-full bg-blue-600" aria-hidden="true"></span>
+                                        <p class="text-sm text-gray-500"><time datetime="2026-01">2026-01</time> <span class="inline-block text-xs font-bold text-white bg-blue-600 rounded px-2 py-0.5 ml-2">Research</span></p>
+                                        <h3 class="mt-1 font-bold text-gray-900">DCM 1.6 — Exploratory pilot study</h3>
+                                        <p class="mt-1 text-gray-700">36 valid interviews testing the responsibility-attribution protocol before it was scaled up.</p>
+                                        <a href="https://doi.org/10.5281/zenodo.18124731" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-sm font-medium text-blue-600 hover:underline">DOI: 10.5281/zenodo.18124731 &rarr;</a>
+                                    </li>
+                                </ol>
+                            </section>
+
+                            <!-- 2025 -->
+                            <section aria-labelledby="year-2025" class="space-y-4">
+                                <h2 id="year-2025" class="pt-4 text-xl sm:text-2xl font-serif font-bold text-gray-900">2025</h2>
+
+                                <ol class="border-l-2 border-blue-200 ml-2 space-y-6">
+                                    <li class="relative pl-6">
+                                        <span class="absolute -left-2 top-2 w-3.5 h-3.5 rounded-full bg-blue-600" aria-hidden="true"></span>
+                                        <p class="text-sm text-gray-500"><time datetime="2025-12">2025-12</time> <span class="inline-block text-xs font-bold text-white bg-blue-600 rounded px-2 py-0.5 ml-2">Research</span></p>
+                                        <h3 class="mt-1 font-bold text-gray-900">The Automation Paradox and Cognitive Sustainability</h3>
+                                        <p class="mt-1 text-gray-700">The epistemic starting point for this entire research line.</p>
+                                        <a href="https://doi.org/10.5281/zenodo.18102508" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-sm font-medium text-blue-600 hover:underline">DOI: 10.5281/zenodo.18102508 &rarr;</a>
+                                    </li>
+                                </ol>
+                            </section>
+
+                            <p class="pt-4 text-sm text-gray-500 border-t"><a href="./" class="text-blue-600 hover:underline">&larr; Back to Home</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <button id="scroll-to-top" type="button" aria-label="Back to top" class="fixed bottom-6 right-6 bg-gray-800 text-white p-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 hover:bg-gray-700 z-20">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+
+    <footer class="bg-white border-t border-gray-200 mt-12">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-sm text-gray-500">
+                &copy; <span id="copyright-year"></span> Fan Chen-chieh. All Rights Reserved. <br class="sm:hidden">
+                Independent Human-AI Collaboration Research | Infinite Inference Laboratory
+            </p>
+            <p class="text-center text-xs text-gray-400 mt-2">
+                Privacy: Google Analytics runs only if you accept cookies (IP anonymized, no ad personalization or cross-device tracking). No other personal data is collected.
+                <button id="cookie-settings" type="button" class="underline hover:text-gray-600">Cookie settings</button>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Cookie 同意橫幅:與 index.html 逐字相同。預設隱藏,由 consent.js 決定是否顯示。 -->
+    <div id="cookie-banner" role="dialog" aria-live="polite" aria-labelledby="cookie-banner-title" class="hidden fixed inset-x-0 bottom-0 z-30 bg-white border-t border-gray-200 shadow-lg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+            <p class="text-sm text-gray-700 flex-1">
+                <strong id="cookie-banner-title" class="text-gray-900">Cookies &amp; analytics.</strong>
+                May I use Google Analytics cookies to count visits? IP addresses are anonymized, with no ad personalization or cross-device tracking. Nothing is loaded unless you accept.
+            </p>
+            <div class="flex gap-3 shrink-0">
+                <button id="cookie-decline" type="button" class="flex-1 sm:flex-none text-sm font-medium text-blue-700 bg-white border border-blue-600 hover:bg-blue-50 px-4 py-2 rounded transition-colors">Decline</button>
+                <button id="cookie-accept" type="button" class="flex-1 sm:flex-none text-sm font-medium text-white bg-blue-600 border border-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+        window.addEventListener('scroll', () => {
+            const isScrolled = window.scrollY > 300;
+            scrollToTopBtn.classList.toggle('opacity-100', isScrolled);
+            scrollToTopBtn.classList.toggle('pointer-events-auto', isScrolled);
+            scrollToTopBtn.classList.toggle('opacity-0', !isScrolled);
+            scrollToTopBtn.classList.toggle('pointer-events-none', !isScrolled);
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
