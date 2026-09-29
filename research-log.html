@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Log | Infinite Inference</title>
 
-    <!-- Content-Security-Policy:與 index.html 相同的白名單。
+    <!-- Content-Security-Policy:與 index.html 相同的白名單,但少了 JSON-LD 的雜湊(本頁沒有結構化資料)。
          本頁唯一的 inline script(回到頂端按鈕 + 版權年份)與 index.html 那段逐字相同,
          所以沿用同一個雜湊值;改動那段 script 時,兩頁與 _headers 的雜湊都要一起更新。 -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' https://www.googletagmanager.com 'sha256-vnlJ9//bmM9ymcZtmhj/uqDD38nWtninmFZgdwCt5es=' 'sha256-muSxKhm4ionPygBEBPRsh6EwRZnz+KYj/S19c+PN1aY=';
+        script-src 'self' https://www.googletagmanager.com 'sha256-muSxKhm4ionPygBEBPRsh6EwRZnz+KYj/S19c+PN1aY=';
         style-src 'self' https://fonts.googleapis.com;
         font-src https://fonts.gstatic.com;
         img-src 'self' data:;
