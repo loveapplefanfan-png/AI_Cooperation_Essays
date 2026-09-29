@@ -1,6 +1,6 @@
-# Infinite Inference: Fan Chen-chieh's Thinking Laboratory
+# Infinite Inference: Fan Chen-Chieh's Thinking Laboratory
 
-The source code of the personal research website of **Fan Chen-chieh (范宸杰)**, an independent researcher working on human-AI collaboration, epistemic sovereignty, and cognitive safety.
+The source code of the personal research website of **Fan Chen-Chieh (范宸杰)**, an independent researcher working on human-AI collaboration, epistemic sovereignty, and cognitive safety.
 
 - **Website:** https://loveapplefanfan-png.github.io/AI_Cooperation_Essays/
 - **ORCID:** https://orcid.org/0009-0000-5317-7385
@@ -30,10 +30,30 @@ The full list of outputs is on the website.
 | `google403c2e7c9e0e1475.html` | Google Search Console verification. Do not delete it |
 | `.github/workflows/tailwind.yml` | Rebuilds `styles.css` on every push to `main` that changes a page or the Tailwind source |
 
-When you change an inline `<script>` in `index.html` or `research-log.html`, recompute its SHA-256 hash. Then update the hash in the Content-Security-Policy `<meta>` tag of both pages and in `_headers`. The two pages share the same back-to-top script, so they share its hash. Otherwise the browser blocks the script.
+
+## Updating CSP hashes
+
+The Content-Security-Policy allows two inline scripts by SHA-256 hash. If the text between the `<script>` tags changes, even by a single space, its hash changes and the browser blocks the script.
+
+| If you change | Update the hash in |
+|---|---|
+| The JSON-LD block in `index.html` | `index.html` and `_headers` |
+| The back-to-top and copyright-year script (identical in both pages) | `index.html`, `research-log.html` and `_headers` |
+
+To recompute a hash, run this on the edited file and replace the old value:
+
+```python
+import re, hashlib, base64
+html = open('index.html', encoding='utf-8').read()
+for m in re.finditer(r'<script(?![^>]*\bsrc=)([^>]*)>(.*?)</script>', html, re.S):
+    print(m.group(1).strip() or '(inline script)',
+          'sha256-' + base64.b64encode(hashlib.sha256(m.group(2).encode('utf-8')).digest()).decode())
+```
+
+Browsers do not execute JSON-LD, so a stale JSON-LD hash will not break the page, but keep it in sync anyway.
 
 ## License
 
-© Fan Chen-chieh. All Rights Reserved.
+© Fan Chen-Chieh. All Rights Reserved.
 
 The license above applies only to this repository's website source code (HTML/CSS/JS). Licensing for the research content itself (papers, notes, data) is stated on their respective DOI pages (e.g. CC BY-NC 4.0 on Zenodo).
