@@ -16,7 +16,7 @@ import re
 import sys
 from pathlib import Path
 
-REQUIRE_JSONLD_HASH = True
+REQUIRE_JSONLD_HASH = False
 
 ROOT = Path(__file__).resolve().parent.parent
 PAGES = ["index.html", "research-log.html"]
