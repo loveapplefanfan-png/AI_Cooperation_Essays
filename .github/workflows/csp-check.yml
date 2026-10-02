@@ -1,0 +1,32 @@
+name: CSP hash check
+
+# 檢查每段 inline script 的 SHA-256 雜湊都有列在 CSP 裡,且 _headers 與 index.html 一致。
+# 只讀取檔案,不會寫回 repo,與 tailwind.yml 互不干擾。
+on:
+  push:
+    paths:
+      - 'index.html'
+      - 'research-log.html'
+      - '_headers'
+      - 'scripts/check_csp.py'
+      - '.github/workflows/csp-check.yml'
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'research-log.html'
+      - '_headers'
+      - 'scripts/check_csp.py'
+      - '.github/workflows/csp-check.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: python scripts/check_csp.py

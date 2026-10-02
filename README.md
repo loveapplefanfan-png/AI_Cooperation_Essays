@@ -29,6 +29,7 @@ The full list of outputs is on the website.
 | `favicon.svg`, `apple-touch-icon.png`, `og-image.png`, `og-image-log.png` | Site icons and social preview images (home page and Research Log) |
 | `google403c2e7c9e0e1475.html` | Google Search Console verification. Do not delete it |
 | `.github/workflows/tailwind.yml` | Rebuilds `styles.css` on every push to `main` that changes a page or the Tailwind source |
+| `.github/workflows/csp-check.yml`, `scripts/check_csp.py` | Read-only check that the CSP hashes match the inline scripts |
 
 
 ## Updating CSP hashes
@@ -51,6 +52,12 @@ for m in re.finditer(r'<script(?![^>]*\bsrc=)([^>]*)>(.*?)</script>', html, re.S
 ```
 
 Browsers do not execute JSON-LD, so a stale JSON-LD hash will not break the page, but keep it in sync anyway.
+
+### Automatic check
+
+`scripts/check_csp.py` (run by `.github/workflows/csp-check.yml` on every push and pull request that touches a page, `_headers` or the script) recomputes every inline script's hash and fails if it is missing from that page's CSP, or if the `_headers` hashes differ from `index.html`. The failure message prints the expected hash to paste in. To run it locally: `python scripts/check_csp.py`.
+
+The script requires a JSON-LD hash while `REQUIRE_JSONLD_HASH = True`; set it to `False` if the JSON-LD hash is ever dropped from the CSP.
 
 ## License
 
