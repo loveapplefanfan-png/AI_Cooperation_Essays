@@ -30,8 +30,8 @@ The full list of outputs is on the website.
 | `.assetsignore` | Files kept in the repo but not published to the website |
 | `favicon.svg`, `apple-touch-icon.png`, `og-image.png`, `og-image-log.png` | Site icons and social preview images (home page and Research Log) |
 | `google403c2e7c9e0e1475.html` | Google Search Console verification. Do not delete it |
-| `.github/workflows/tailwind.yml` | Rebuilds `styles.css` on every push to `main` that changes a page or the Tailwind source |
-| `.github/workflows/csp-check.yml`, `scripts/check_csp.py` | Read-only check that the CSP hashes match the inline scripts |
+| `.github/workflows/tailwind.yml` | Rebuilds `styles.css` on every push to `main` that changes a root-level `*.html` page or the Tailwind source |
+| `.github/workflows/csp-check.yml`, `scripts/check_csp.py` | Read-only check: every page's CSP is consistent with `_headers`, and no page has an inline script that the CSP does not allow |
 
 
 ## Content Security Policy

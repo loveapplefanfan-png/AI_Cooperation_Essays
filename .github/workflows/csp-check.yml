@@ -5,17 +5,13 @@ name: CSP hash check
 on:
   push:
     paths:
-      - 'index.html'
-      - 'research-log.html'
-      - 'work-with-me.html'
+      - '*.html'
       - '_headers'
       - 'scripts/check_csp.py'
       - '.github/workflows/csp-check.yml'
   pull_request:
     paths:
-      - 'index.html'
-      - 'research-log.html'
-      - 'work-with-me.html'
+      - '*.html'
       - '_headers'
       - 'scripts/check_csp.py'
       - '.github/workflows/csp-check.yml'
