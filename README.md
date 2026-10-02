@@ -34,12 +34,13 @@ The full list of outputs is on the website.
 
 ## Updating CSP hashes
 
-The Content-Security-Policy allows two inline scripts by SHA-256 hash. If the text between the `<script>` tags changes, even by a single space, its hash changes and the browser blocks the script.
+The Content-Security-Policy allows one inline script by SHA-256 hash: the back-to-top and copyright-year script. If the text between its `<script>` tags changes, even by a single space, its hash changes and the browser blocks the script.
 
 | If you change | Update the hash in |
 |---|---|
-| The JSON-LD block in `index.html` | `index.html` and `_headers` |
 | The back-to-top and copyright-year script (identical in both pages) | `index.html`, `research-log.html` and `_headers` |
+
+The JSON-LD block in `index.html` (`type="application/ld+json"`) is a data block that browsers do not execute, so it is not subject to `script-src` and has no hash. Edit it freely when adding research; no CSP change is needed.
 
 To recompute a hash, run this on the edited file and replace the old value:
 
@@ -47,17 +48,17 @@ To recompute a hash, run this on the edited file and replace the old value:
 import re, hashlib, base64
 html = open('index.html', encoding='utf-8').read()
 for m in re.finditer(r'<script(?![^>]*\bsrc=)([^>]*)>(.*?)</script>', html, re.S):
+    if 'ld+json' in m.group(1):
+        continue  # JSON-LD needs no hash
     print(m.group(1).strip() or '(inline script)',
           'sha256-' + base64.b64encode(hashlib.sha256(m.group(2).encode('utf-8')).digest()).decode())
 ```
-
-Browsers do not execute JSON-LD, so a stale JSON-LD hash will not break the page, but keep it in sync anyway.
 
 ### Automatic check
 
 `scripts/check_csp.py` (run by `.github/workflows/csp-check.yml` on every push and pull request that touches a page, `_headers` or the script) recomputes every inline script's hash and fails if it is missing from that page's CSP, or if the `_headers` hashes differ from `index.html`. The failure message prints the expected hash to paste in. To run it locally: `python scripts/check_csp.py`.
 
-The script requires a JSON-LD hash while `REQUIRE_JSONLD_HASH = True`; set it to `False` if the JSON-LD hash is ever dropped from the CSP.
+JSON-LD is ignored by the check (`REQUIRE_JSONLD_HASH = False`). Set it to `True` only if a JSON-LD hash is ever added back to the CSP.
 
 ## License
 

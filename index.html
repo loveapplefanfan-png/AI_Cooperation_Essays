@@ -6,15 +6,17 @@
     <title>Infinite Inference: Fan Chen-Chieh's Thinking Laboratory</title>
 
     <!-- Content-Security-Policy: 白名單限制頁面只能從這裡列出的來源載入資源。
-         script-src 用雜湊值鎖定站內固定的兩段 inline script(結構化資料、回到頂端按鈕),
-         這兩段內容只要有任何一個字元被竄改,雜湊就會對不上,瀏覽器會拒絕執行;
+         script-src 用雜湊值鎖定站內唯一一段 inline script(回到頂端按鈕 + 版權年份),
+         內容只要有任何一個字元被竄改,雜湊就會對不上,瀏覽器會拒絕執行;
+         JSON-LD 結構化資料(type="application/ld+json")是資料區塊,瀏覽器不會執行它,
+         不受 script-src 管制,所以不需要也不放雜湊;
          Tailwind 已經改成自架的靜態 styles.css(見 src/input.css + GitHub Actions build),
          不再從 cdn.tailwindcss.com 載入,所以 script-src 不用再放行它。
          style-src 已拿掉 'unsafe-inline':頁面現在完全沒有 inline <style>,
          所有樣式都在建置階段就固定進 styles.css,同源載入,不需要再放寬。 -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' https://www.googletagmanager.com 'sha256-QU5ZjdRH4TksDnuSXvPbTGCW647D6pkCgXouW4Tgspc=' 'sha256-muSxKhm4ionPygBEBPRsh6EwRZnz+KYj/S19c+PN1aY=';
+        script-src 'self' https://www.googletagmanager.com 'sha256-muSxKhm4ionPygBEBPRsh6EwRZnz+KYj/S19c+PN1aY=';
         style-src 'self' https://fonts.googleapis.com;
         font-src https://fonts.gstatic.com;
         img-src 'self' data:;
