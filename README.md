@@ -20,9 +20,11 @@ The full list of outputs is on the website.
 | Path | Purpose |
 |---|---|
 | `index.html` | The home page |
+| `work-with-me.html` | Work with me: availability and services page, linked from the home page |
 | `research-log.html` | Research Log: a timeline of published outputs, linked from the home page |
 | `styles.css` | Compiled stylesheet, rebuilt automatically by GitHub Actions. Do not edit it by hand |
 | `src/input.css`, `tailwind.config.js` | Tailwind CSS source and configuration |
+| `site.js` | Back-to-top button and footer year (formerly an inline script) |
 | `consent.js` | Cookie consent. Google Analytics loads only after the visitor accepts |
 | `_headers` | Security headers for Cloudflare |
 | `.assetsignore` | Files kept in the repo but not published to the website |
@@ -32,33 +34,19 @@ The full list of outputs is on the website.
 | `.github/workflows/csp-check.yml`, `scripts/check_csp.py` | Read-only check that the CSP hashes match the inline scripts |
 
 
-## Updating CSP hashes
+## Content Security Policy
 
-The Content-Security-Policy allows one inline script by SHA-256 hash: the back-to-top and copyright-year script. If the text between its `<script>` tags changes, even by a single space, its hash changes and the browser blocks the script.
+The site has no inline executable script. Everything that runs lives in same-origin files (`consent.js`, `site.js`), which `script-src 'self'` allows, so the CSP needs **no hashes**. Add new behaviour to `site.js` (or another same-origin `.js` file loaded with `<script src="…" defer>`), not to an inline `<script>`: an inline script would be blocked by the browser and fail the CI check below.
 
-| If you change | Update the hash in |
-|---|---|
-| The back-to-top and copyright-year script (identical in both pages) | `index.html`, `research-log.html` and `_headers` |
+The JSON-LD block in `index.html` (`type="application/ld+json"`) is a data block that browsers do not execute, so it is not subject to `script-src`. Edit it freely when adding research; no CSP change is needed.
 
-The JSON-LD block in `index.html` (`type="application/ld+json"`) is a data block that browsers do not execute, so it is not subject to `script-src` and has no hash. Edit it freely when adding research; no CSP change is needed.
-
-To recompute a hash, run this on the edited file and replace the old value:
-
-```python
-import re, hashlib, base64
-html = open('index.html', encoding='utf-8').read()
-for m in re.finditer(r'<script(?![^>]*\bsrc=)([^>]*)>(.*?)</script>', html, re.S):
-    if 'ld+json' in m.group(1):
-        continue  # JSON-LD needs no hash
-    print(m.group(1).strip() or '(inline script)',
-          'sha256-' + base64.b64encode(hashlib.sha256(m.group(2).encode('utf-8')).digest()).decode())
-```
+Any CSP change must be made in the meta tag of every page (`index.html`, `research-log.html`, `work-with-me.html`) and in `_headers` (Cloudflare). A new external resource (image, iframe, script, font) must be added to the allow-list in all four places.
 
 ### Automatic check
 
-`scripts/check_csp.py` (run by `.github/workflows/csp-check.yml` on every push and pull request that touches a page, `_headers` or the script) recomputes every inline script's hash and fails if it is missing from that page's CSP, or if the `_headers` hashes differ from `index.html`. The failure message prints the expected hash to paste in. To run it locally: `python scripts/check_csp.py`.
+`scripts/check_csp.py` (run by `.github/workflows/csp-check.yml` on every push and pull request that touches a page, `_headers` or the script) fails if any page has an inline script whose SHA-256 hash is not in its CSP (so any new inline script), or if the hashes in `_headers` differ from those in a page. The failure message prints the hash. To run it locally: `python scripts/check_csp.py`.
 
-JSON-LD is ignored by the check (`REQUIRE_JSONLD_HASH = False`). Set it to `True` only if a JSON-LD hash is ever added back to the CSP.
+JSON-LD is ignored by the check (`REQUIRE_JSONLD_HASH = False`).
 
 ## License
 
