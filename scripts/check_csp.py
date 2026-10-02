@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check that every inline <script> is allowed by the CSP SHA-256 hashes.
 
-Reads index.html, research-log.html and _headers (read-only) and fails when:
+Reads every root-level page (*.html), plus _headers (read-only), and fails when:
   * an inline script's hash is missing from that page's meta CSP script-src
   * the _headers script-src hash set differs from any page's
 Hashes in a CSP that match no inline script only produce a warning.
@@ -23,7 +23,9 @@ from pathlib import Path
 REQUIRE_JSONLD_HASH = False
 
 ROOT = Path(__file__).resolve().parent.parent
-PAGES = ["index.html", "research-log.html", "work-with-me.html"]
+# Every root-level page; new pages are picked up automatically. The Google Search
+# Console verification file is not a site page and has no CSP.
+PAGES = sorted(p.name for p in ROOT.glob("*.html") if not p.name.startswith("google"))
 HEADERS = "_headers"
 
 SCRIPT_RE = re.compile(r"<script(?![^>]*\bsrc=)([^>]*)>(.*?)</script>", re.S | re.I)
