@@ -7,6 +7,7 @@ on:
     paths:
       - 'index.html'
       - 'research-log.html'
+      - 'work-with-me.html'
       - '_headers'
       - 'scripts/check_csp.py'
       - '.github/workflows/csp-check.yml'
@@ -14,6 +15,7 @@ on:
     paths:
       - 'index.html'
       - 'research-log.html'
+      - 'work-with-me.html'
       - '_headers'
       - 'scripts/check_csp.py'
       - '.github/workflows/csp-check.yml'

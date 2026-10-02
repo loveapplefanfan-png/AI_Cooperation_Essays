@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Log | Infinite Inference</title>
 
-    <!-- Content-Security-Policy:與 index.html 相同的白名單(JSON-LD 不需要雜湊,見 index.html 的說明)。
-         本頁唯一的 inline script(回到頂端按鈕 + 版權年份)與 index.html 那段逐字相同,
-         所以沿用同一個雜湊值;改動那段 script 時,兩頁與 _headers 的雜湊都要一起更新。 -->
+    <!-- Content-Security-Policy:與 index.html 完全相同。全站沒有 inline script,
+         腳本都放在同源外部檔案(consent.js、site.js),所以 script-src 不需要任何雜湊值。 -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' https://www.googletagmanager.com 'sha256-muSxKhm4ionPygBEBPRsh6EwRZnz+KYj/S19c+PN1aY=';
+        script-src 'self' https://www.googletagmanager.com;
         style-src 'self' https://fonts.googleapis.com;
         font-src https://fonts.gstatic.com;
         img-src 'self' data:;
@@ -49,12 +48,13 @@
     <!-- Cookie 同意 + Google Analytics:與 index.html 共用同一份 consent.js,
          訪客在任一頁做的選擇(存在 localStorage)兩頁通用。 -->
     <script src="consent.js" defer></script>
+    <script src="site.js" defer></script>
 </head>
 <body class="min-h-screen relative">
     <header class="bg-white shadow-sm sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center gap-3">
             <p class="text-xl sm:text-2xl font-serif text-blue-600 font-bold tracking-tight"><a href="./" class="hover:text-blue-700">Infinite Inference</a> <span class="text-sm text-gray-400 font-sans font-normal ml-2 hidden sm:inline">by Fan Chen-Chieh</span></p>
-            <a href="mailto:fanchenchieh1976@gmail.com" class="inline-flex shrink-0 items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm">
+            <a href="mailto:loveapplefanfan@gmail.com" class="inline-flex shrink-0 items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm">
                 Contact Me
             </a>
         </div>
@@ -168,7 +168,7 @@
     <footer class="bg-white border-t border-gray-200 mt-12">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <p class="text-center text-sm text-gray-500">
-                &copy; <span id="copyright-year"></span> Fan Chen-Chieh. All Rights Reserved. <br class="sm:hidden">
+                &copy; <span id="copyright-year">2026</span> Fan Chen-Chieh. All Rights Reserved. <br class="sm:hidden">
                 Independent Human-AI Collaboration Research | Infinite Inference Laboratory
             </p>
             <p class="text-center text-xs text-gray-400 mt-2">
@@ -192,22 +192,5 @@
         </div>
     </div>
 
-    <script>
-        const scrollToTopBtn = document.getElementById('scroll-to-top');
-
-        window.addEventListener('scroll', () => {
-            const isScrolled = window.scrollY > 300;
-            scrollToTopBtn.classList.toggle('opacity-100', isScrolled);
-            scrollToTopBtn.classList.toggle('pointer-events-auto', isScrolled);
-            scrollToTopBtn.classList.toggle('opacity-0', !isScrolled);
-            scrollToTopBtn.classList.toggle('pointer-events-none', !isScrolled);
-        });
-
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        document.getElementById('copyright-year').textContent = new Date().getFullYear();
-    </script>
 </body>
 </html>

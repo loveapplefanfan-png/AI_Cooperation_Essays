@@ -3,8 +3,12 @@
 
 Reads index.html, research-log.html and _headers (read-only) and fails when:
   * an inline script's hash is missing from that page's meta CSP script-src
-  * the _headers script-src hash set differs from index.html's
+  * the _headers script-src hash set differs from any page's
 Hashes in a CSP that match no inline script only produce a warning.
+
+The site currently has no inline executable script (they live in consent.js and
+site.js, allowed by script-src 'self'), so no hashes are expected anywhere; any
+new inline <script> without a matching hash fails the check.
 
 REQUIRE_JSONLD_HASH: JSON-LD (type="application/ld+json") is data that browsers
 do not execute, so its hash gives no protection. Set to False to stop requiring
@@ -19,7 +23,7 @@ from pathlib import Path
 REQUIRE_JSONLD_HASH = False
 
 ROOT = Path(__file__).resolve().parent.parent
-PAGES = ["index.html", "research-log.html"]
+PAGES = ["index.html", "research-log.html", "work-with-me.html"]
 HEADERS = "_headers"
 
 SCRIPT_RE = re.compile(r"<script(?![^>]*\bsrc=)([^>]*)>(.*?)</script>", re.S | re.I)
@@ -83,13 +87,13 @@ def main():
         header_csp = None
     if header_csp is None:
         errors.append(f"{HEADERS}: no Content-Security-Policy line found")
-    elif "index.html" in page_hashes:
+    else:
         header_hashes = set(HASH_RE.findall(script_src(header_csp.group(1))))
-        index_hashes = page_hashes["index.html"]
-        for h in sorted(index_hashes - header_hashes):
-            errors.append(f"{HEADERS}: missing hash present in index.html: '{h}'")
-        for h in sorted(header_hashes - index_hashes):
-            errors.append(f"{HEADERS}: has hash not in index.html: '{h}'")
+        for page, page_set in page_hashes.items():
+            for h in sorted(page_set - header_hashes):
+                errors.append(f"{HEADERS}: missing hash present in {page}: '{h}'")
+            for h in sorted(header_hashes - page_set):
+                errors.append(f"{HEADERS}: has hash not in {page}: '{h}'")
 
     for w in warnings:
         print(f"WARNING: {w}")

@@ -1,3 +1,5 @@
+> **注意(2026-10-02 更新):本筆記已過時。** 任務 A、B 已完成並合併;之後 inline script 也已外部化為 `site.js`,全站不再有 inline script,CSP 不需要任何雜湊。以下內容保留作為歷史紀錄,現況請以 README「Content Security Policy」小節為準。
+
 # 交接筆記:網站 CSP 雜湊維護(給之後的 Claude Code 工作階段)
 
 建立日期:2026-09-29
