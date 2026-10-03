@@ -5,3 +5,5 @@
 src/
 tailwind.config.js
 README.md
+scripts/
+.gitignore
