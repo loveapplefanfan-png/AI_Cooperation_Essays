@@ -27,13 +27,13 @@ The full list of outputs is on the website.
 | `site.js` | Back-to-top button and footer year (formerly an inline script) |
 | `consent.js` | Cookie consent. Google Analytics loads only after the visitor accepts |
 | `_headers` | Security headers and cache rules for Cloudflare |
-| `fonts/` | Self-hosted Lora and Inter (Latin subset, variable woff2) with their SIL OFL licenses. Declared via `@font-face` in `src/input.css` |
+| `fonts/` | Self-hosted Lora and Inter (Latin subset, variable woff2) with their SIL OFL licenses. Declared via `@font-face` in `src/input.css` and preloaded in the `<head>` of every page |
 | `.assetsignore` | Files kept in the repo but not published to the website |
+| `.gitignore` | Keeps Python cache files (`__pycache__/`, `*.pyc`) out of version control |
 | `favicon.svg`, `apple-touch-icon.png`, `og-image.png`, `og-image-log.png` | Site icons and social preview images (home page and Research Log) |
 | `google403c2e7c9e0e1475.html` | Google Search Console verification. Do not delete it |
 | `.github/workflows/tailwind.yml` | Rebuilds `styles.css` on every push to `main` that changes a root-level `*.html` page or the Tailwind source |
 | `.github/workflows/csp-check.yml`, `scripts/check_csp.py` | Read-only check: every page's CSP is consistent with `_headers`, and no page has an inline script that the CSP does not allow |
-
 
 ## Content Security Policy
 
@@ -48,6 +48,19 @@ Any CSP change must be made in the meta tag of every page (`index.html`, `resear
 `scripts/check_csp.py` (run by `.github/workflows/csp-check.yml` on every push and pull request that touches a page, `_headers` or the script) fails if any page has an inline script whose SHA-256 hash is not in its CSP (so any new inline script), or if the hashes in `_headers` differ from those in a page. The failure message prints the hash. To run it locally: `python scripts/check_csp.py`.
 
 JSON-LD is ignored by the check (`REQUIRE_JSONLD_HASH = False`).
+
+## Fonts
+
+Lora and Inter are self-hosted in `fonts/` (Latin subset, variable woff2, SIL Open Font License; the license files sit next to the fonts). No font is loaded from Google Fonts or any other external server. `_headers` caches `/fonts/*` for one year (`immutable`), so a changed font file needs a **new file name**, otherwise returning visitors keep the old one.
+
+Each page preloads both font files in its `<head>`:
+
+```html
+<link rel="preload" href="fonts/lora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+```
+
+Keep the `crossorigin` attribute: fonts are always fetched in CORS mode, and without it the preloaded file is not reused and downloads twice. To change a font, update the `@font-face` rules in `src/input.css` **and** the preload links in all three pages, using the same file names.
 
 ## License
 
