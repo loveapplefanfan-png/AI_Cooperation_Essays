@@ -26,7 +26,8 @@ The full list of outputs is on the website.
 | `src/input.css`, `tailwind.config.js` | Tailwind CSS source and configuration |
 | `site.js` | Back-to-top button and footer year (formerly an inline script) |
 | `consent.js` | Cookie consent. Google Analytics loads only after the visitor accepts |
-| `_headers` | Security headers for Cloudflare |
+| `_headers` | Security headers and cache rules for Cloudflare |
+| `fonts/` | Self-hosted Lora and Inter (Latin subset, variable woff2) with their SIL OFL licenses. Declared via `@font-face` in `src/input.css` |
 | `.assetsignore` | Files kept in the repo but not published to the website |
 | `favicon.svg`, `apple-touch-icon.png`, `og-image.png`, `og-image-log.png` | Site icons and social preview images (home page and Research Log) |
 | `google403c2e7c9e0e1475.html` | Google Search Console verification. Do not delete it |
@@ -40,7 +41,7 @@ The site has no inline executable script. Everything that runs lives in same-ori
 
 The JSON-LD block in `index.html` (`type="application/ld+json"`) is a data block that browsers do not execute, so it is not subject to `script-src`. Edit it freely when adding research; no CSP change is needed.
 
-Any CSP change must be made in the meta tag of every page (`index.html`, `research-log.html`, `work-with-me.html`) and in `_headers` (Cloudflare). A new external resource (image, iframe, script, font) must be added to the allow-list in all four places.
+Any CSP change must be made in the meta tag of every page (`index.html`, `research-log.html`, `work-with-me.html`) and in `_headers` (Cloudflare). Fonts are self-hosted, so `style-src` and `font-src` are `'self'` only. A new external resource (image, iframe, script, font) must be added to the allow-list in all four places.
 
 ### Automatic check
 
