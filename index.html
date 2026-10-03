@@ -17,8 +17,8 @@
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
         script-src 'self' https://www.googletagmanager.com;
-        style-src 'self' https://fonts.googleapis.com;
-        font-src https://fonts.gstatic.com;
+        style-src 'self';
+        font-src 'self';
         img-src 'self' data:;
         connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com;
         base-uri 'self';
@@ -128,9 +128,8 @@
     <!-- Tailwind 已自架:styles.css 由 GitHub Actions 從 src/input.css 自動 build 出來,
          不再依賴 cdn.tailwindcss.com,也不需要處理跨網域 SRI 的問題。 -->
     <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="fonts/lora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <!-- Cookie 同意 + Google Analytics:GA 只在訪客按下 Accept 後才載入(見 consent.js)。
          同源外部檔案,CSP 的 script-src 'self' 已放行,不需要雜湊值。 -->
     <script src="consent.js" defer></script>
