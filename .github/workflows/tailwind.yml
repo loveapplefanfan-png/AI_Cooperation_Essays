@@ -28,7 +28,7 @@ jobs:
           node-version: '24'
 
       - name: Install Tailwind CLI
-        run: npm install -D tailwindcss@3.4.17
+        run: npm install -D tailwindcss@3.4.19
 
       - name: Build static CSS
         run: npx tailwindcss -i ./src/input.css -o ./styles.css --minify
