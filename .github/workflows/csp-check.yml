@@ -1,6 +1,7 @@
 name: CSP hash check
 
-# 檢查每段 inline script 的 SHA-256 雜湊都有列在 CSP 裡,且 _headers 與 index.html 一致。
+# 檢查每段 inline script 的 SHA-256 雜湊都有列在 CSP 裡,且每個頁面的 meta CSP 與 _headers 完全一致
+# (frame-ancestors 等 meta 裡無效的指令除外,只放在 _headers)。
 # 只讀取檔案,不會寫回 repo,與 tailwind.yml 互不干擾。
 on:
   push:
