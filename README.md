@@ -45,7 +45,7 @@ Any CSP change must be made in the meta tag of every page (`index.html`, `resear
 
 ### Automatic check
 
-`scripts/check_csp.py` (run by `.github/workflows/csp-check.yml` on every push and pull request that touches a page, `_headers` or the script) fails if any page has an inline script whose SHA-256 hash is not in its CSP (so any new inline script), or if the hashes in `_headers` differ from those in a page. The failure message prints the hash. To run it locally: `python scripts/check_csp.py`.
+`scripts/check_csp.py` (run by `.github/workflows/csp-check.yml` on every push and pull request that touches a page, `_headers` or the script) fails if any page has an inline script whose SHA-256 hash is not in its CSP (so any new inline script), or if the hashes in `_headers` differ from those in a page, or if any other directive in a page's meta CSP differs from `_headers` (`frame-ancestors`, `report-uri` and `sandbox` are exempt, since browsers ignore them in a meta tag and they live only in `_headers`). The failure message prints the hash. To run it locally: `python scripts/check_csp.py`.
 
 JSON-LD is ignored by the check (`REQUIRE_JSONLD_HASH = False`).
 
